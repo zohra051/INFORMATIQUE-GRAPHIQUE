@@ -9,9 +9,11 @@
 #include "Materiau.hpp"
 #include "Rayon.hpp"
 #include "Intersection.hpp"
+#include <cmath>
 class Sphere : public Objet
 {
 	private:
+	
 		Point centre;	//centre de la sphère
 		float rayon;	//rayon de la sphère
 	public:

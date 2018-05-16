@@ -11,7 +11,9 @@ class Intersection : public Point
 	public:
 		Intersection();
 		Intersection(const Point& p, Objet* o, const float& t);
+		void setIntersection(Point& p, float tarte);
 		~Intersection(){}; // ne pas effacer objet !!!
+		
 };
 
 #endif

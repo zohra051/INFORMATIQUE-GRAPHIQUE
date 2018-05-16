@@ -41,12 +41,13 @@ void Camera::genererImage(const Scene& sc, Image& im)
 			Rayon r(p,v);	//création du rayon
 			
 			Intersection inter;
+			
 			if(sc.intersection(r,inter) == true)
 				im.setPixel(i,j,bleu);
 			else
 				im.setPixel(i,j,sc.getFond());
-			
-			/*if(i == 0 and j == 0)
+			/*
+			if(i == 0 and j == 0)
 				std::cout<<r<<'\n';
 			if(i == 12 and j == 7)
 				std::cout<<r<<'\n';
