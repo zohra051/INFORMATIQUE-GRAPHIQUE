@@ -21,6 +21,12 @@ Scene::~Scene()
 	delete fond;
 }
 
+//getter de la couleur de fond
+Couleur Scene::getFond() const
+{
+	return *fond;
+}
+
 //change la couleur de fond
 void Scene::setFond(Couleur * f)
 {
@@ -41,8 +47,16 @@ void Scene::ajouterSource(Source * src)
 }
 
 //routine d'intersection
-bool Scene::intersection() const
-{return false;}
+bool Scene::intersection(const Rayon& r, Intersection& inter) const
+{
+	for (int i=0; i < objets.size(); ++i)
+	{
+		if(objets[i]->intersection(r,inter) == true)
+			return true;
+	}
+	return false;
+	
+}
 
 //charge une scène à partir d'un fichier existant (fichier à mettre dans le meme dossier que l'exécutable)
 /* syntaxe du fichier:

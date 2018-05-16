@@ -27,7 +27,7 @@ float Plan::getD() const
 {return d;}
 
 //routine d'intersection, @Objet
-bool Plan::intersection() const
+bool Plan::intersection(const Rayon& r, Intersection& inter) const
 {return false;}
 
 //permet d'afficher lorsque l'on passe par pointeur, @Objet

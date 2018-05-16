@@ -13,7 +13,7 @@ Sphere::Sphere(Materiau materiau, Point centre, float rayon):
 Objet(materiau),centre(centre),rayon(rayon)
 {}
 
-bool Sphere::intersection() const //routine d'intersection, @Objet
+bool Sphere::intersection(const Rayon& r, Intersection& inter) const //routine d'intersection, @Objet
 {
 	return false;
 }

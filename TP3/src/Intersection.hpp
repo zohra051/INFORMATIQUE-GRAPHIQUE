@@ -1,6 +1,8 @@
 #ifndef INTERSECTION_HPP
 #define INTERSECTION_HPP
-#include "Objet.hpp"
+
+class Objet;
+
 class Intersection : public Point 
 {
 	private:

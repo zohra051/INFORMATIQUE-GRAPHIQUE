@@ -31,12 +31,6 @@ void Camera::genererImage(const Scene& sc, Image& im)
 	{
 		for(float j=0;j<im.getHauteur();j++)
 		{
-			//réalisation de l'image
-			if(i == j)
-				im.setPixel(i,j,blanc);
-			else
-				im.setPixel(i,j,bleu);
-
 			//calcule du milieu du pixel de coordonnée (i,j)
 			float milieuX = largeur * i + largeur/2.0f;
 			float milieuY = hauteur * j + hauteur/2.0f;
@@ -45,12 +39,19 @@ void Camera::genererImage(const Scene& sc, Image& im)
 			Vecteur v(milieuX-1,-milieuY+1,-distance);	//définition du vecteur, on s'arrange pour que l'image soit centré à l'origine
 			v.normaliser();	//on normalise le vecteur
 			Rayon r(p,v);	//création du rayon
-			if(i == 0 and j == 0)
+			
+			Intersection inter;
+			if(sc.intersection(r,inter) == true)
+				im.setPixel(i,j,bleu);
+			else
+				im.setPixel(i,j,sc.getFond());
+			
+			/*if(i == 0 and j == 0)
 				std::cout<<r<<'\n';
 			if(i == 12 and j == 7)
 				std::cout<<r<<'\n';
 			if(i == 101 and j == 200)
-				std::cout<<r<<'\n';
+				std::cout<<r<<'\n';*/
 		}
 	}
 }

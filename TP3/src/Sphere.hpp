@@ -7,6 +7,8 @@
 #include "Objet.hpp"
 #include "Point.hpp"
 #include "Materiau.hpp"
+#include "Rayon.hpp"
+#include "Intersection.hpp"
 class Sphere : public Objet
 {
 	private:
@@ -17,7 +19,7 @@ class Sphere : public Objet
 		Sphere(Materiau materiau, Point centre, float rayon); // constructeur par paramètre
 		Point getCentre() const;	//getter centre
 		float getRayon() const;		//getter rayon
-		bool intersection() const;	//routine d'intersection, @Objet
+		bool intersection(const Rayon& r, Intersection& inter) const;	//routine d'intersection, @Objet
 		void afficher() const;		//fonction d'affichage par pointeur, @Objet
 		friend std::ostream& operator<<(std::ostream& os,const Sphere& s);	//opérateur sortie
 		friend std::istream& operator>>(std::istream& is,Sphere& s);	//opérateur entrée
