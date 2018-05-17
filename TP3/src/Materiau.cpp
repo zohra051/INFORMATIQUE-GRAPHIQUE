@@ -44,6 +44,7 @@ void Materiau::setAttibut(Couleur couleur, float kd, float ks, int s)
 		ks = 0.0f;
 	if(ks > 1)
 		ks = 1.0f;
+		this->ks=ks;
 	if(s<1)
 		s=1;
 	this->s = s; 

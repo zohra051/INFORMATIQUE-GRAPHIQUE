@@ -57,7 +57,7 @@ bool Image::save(std::string nom)
 	fichier << "255"<<std::endl;
 	for(int i=0;i<largeur*hauteur;i++)
 	{
-		fichier << pixel[i].r*255 << " " << pixel[i].g*255 << " "<< pixel[i].b*255<<std::endl;
+		fichier << (int)(pixel[i].r*255) << " " << (int)(pixel[i].g*255) << " "<< (int)(pixel[i].b*255)<<std::endl;
 	}
 
 	return true;

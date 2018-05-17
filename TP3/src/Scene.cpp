@@ -2,7 +2,7 @@
 
 
 #include "Scene.hpp"
-
+#include <cfloat>
 //constructeur, scène vide couleur de fond noir
 Scene::Scene():
 fond(new Couleur(0,0,0))
@@ -49,13 +49,24 @@ void Scene::ajouterSource(Source * src)
 //routine d'intersection
 bool Scene::intersection(const Rayon& r, Intersection& inter) const
 {
+	float trouver=FLT_MAX;
+	//parcourt des objets
 	for (int i=0; i < objets.size(); ++i)
 	{
+		//teste s'il trouve une intersection
 		if(objets[i]->intersection(r,inter) == true)
-			return true;
+		{
+			if(trouver > inter.getDistance())
+			{
+				trouver=inter.getDistance();
+				inter.setObjet(objets[i]);
+			}
+		}
 	}
-	return false;
-	
+	if( trouver == FLT_MAX)
+		return false;
+	else
+		return true;
 }
 
 //charge une scène à partir d'un fichier existant (fichier à mettre dans le meme dossier que l'exécutable)

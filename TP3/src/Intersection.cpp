@@ -10,6 +10,20 @@ Intersection::Intersection(const Point& p, Objet* o, const float& t):
 Point(p),objet(o),distance(t)
 {}
 
+Objet* Intersection::getObjet() const
+{
+	return objet;
+}
+
+float Intersection::getDistance() const
+{
+	return distance;
+}
+
+void Intersection::setObjet(Objet* obj)
+{
+	objet=obj;
+}
 
 void Intersection::setIntersection(Point& p, float tarte)
 {
