@@ -2,7 +2,7 @@
 
 
 #include "Sphere.hpp"
-
+#include <cmath>
 //constructeur par défaut, sphère à l'origine de rayon 1
 Sphere::Sphere():
 Objet(),centre(Point()),rayon(1)
@@ -16,16 +16,16 @@ Objet(materiau),centre(centre),rayon(rayon)
 bool Sphere::intersection(const Rayon& r, Intersection& inter) const //routine d'intersection, @Objet
 {
 	float a = pow(r.direction.dx,2) + pow(r.direction.dy,2) + pow(r.direction.dz,2);
-	float b = 0.0f;
-	float c = pow(r.origine.x,2) + pow(r.origine.y,2) + pow(r.origine.z,2) +  - pow(centre.x,2) - pow(centre.y,2) - pow(centre.z,2) - pow(rayon,2); 
-	std::cout << a <<" "<< c<<" ";
+	float b = (2.0f*( r.origine.x *  r.direction.dx )-2.0f*((r.direction.dx)*centre.x)+2.0f*(r.origine.y *  r.direction.dy )-2.0f*((r.direction.dy)*centre.y)+2.0f*(r.origine.z *  r.direction.dz )-2.0f*((r.direction.dz)*centre.z));
+	float c = (r.origine.x - centre.x)*(r.origine.x - centre.x) + pow(r.origine.y - centre.y,2) + pow(r.origine.z - centre.z,2)-pow(rayon,2);
+	//std::cout << a <<" "<<b<<" "<< c<<" ";
 	float resultat;
 	float resultat1;
 	float resultat2;
-	
+
 	float determinant = pow(b,2) -(4.0f * a * c);
-	std::cout<<determinant<<std::endl;
-	
+	//std::cout<<determinant<<std::endl;
+
 	if(determinant == 0 )
 	{
 		 resultat = (- b) / ( 2.0f * a);
@@ -38,7 +38,7 @@ bool Sphere::intersection(const Rayon& r, Intersection& inter) const //routine d
 	}
 	if(determinant > 0 )
 	{
-		
+
 		resultat1 = ( (- b) - sqrt(determinant) ) / (2.0f * a);
 		resultat2 = ( (- b) + sqrt(determinant) ) / (2.0f * a);
 
@@ -59,8 +59,8 @@ bool Sphere::intersection(const Rayon& r, Intersection& inter) const //routine d
 			inter.setIntersection(p,resultat2);
 		}
 		return true;
-	}	
-	
+	}
+
 	return false;
 }
 
@@ -94,3 +94,5 @@ std::istream& operator>>(std::istream& is,Sphere& s)
 	is >> s.centre >> s.rayon;
 	return is;
 }
+
+

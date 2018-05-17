@@ -14,7 +14,7 @@ class Point
 		float z;
 
 		Point(); //constructeur par défaut, point à l'origine
-		Point(int x,int y,int z);	//constructeur par paramètre
+		Point(float x,float y,float z);	//constructeur par paramètre
 		Point(const Point& p);
 		friend std::ostream& operator<<(std::ostream& os,const Point& p); //opérateur de sortie
 		friend std::istream& operator>>(std::istream& is,Point& p); //opérateur d'entrée
