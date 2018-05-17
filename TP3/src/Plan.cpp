@@ -28,7 +28,28 @@ float Plan::getD() const
 
 //routine d'intersection, @Objet
 bool Plan::intersection(const Rayon& r, Intersection& inter) const
-{return false;}
+{
+/*La valeur de t n'est pas toujours definit: 
+ * si le vecteur est parallèle par rapport au plan
+ * sinon il y a au moins une intersection */
+ 
+	float A=((a*r.direction.dx)+(b*r.direction.dy)+(c*r.direction.dz));
+	if( A == 0)
+	{
+		return false;
+	}
+	else
+	{
+		float t = (-((a*r.origine.x)+(b*r.origine.y)+(c*r.origine.z)+d)/ A);
+		 float x = t * r.direction.dx;
+		 float y = t * r.direction.dy;
+		 float z = t * r.direction.dz;
+		 Point p(x,y,z);
+		 inter.setIntersection(p,t);
+		return true;
+	}
+	
+}
 
 //permet d'afficher lorsque l'on passe par pointeur, @Objet
 void Plan::afficher() const

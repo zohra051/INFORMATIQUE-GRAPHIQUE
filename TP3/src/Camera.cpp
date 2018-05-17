@@ -45,7 +45,6 @@ void Camera::genererImage(const Scene& sc, Image& im)
 			if(sc.intersection(r,inter) == true)
 			{
 				im.setPixel(i,j,inter.getObjet()->getMateriau().getCouleur());
-				std::cout<<im.getPixel(i,j);
 			}
 			else
 				im.setPixel(i,j,sc.getFond());

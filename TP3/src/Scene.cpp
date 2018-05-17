@@ -56,7 +56,7 @@ bool Scene::intersection(const Rayon& r, Intersection& inter) const
 		//teste s'il trouve une intersection
 		if(objets[i]->intersection(r,inter) == true)
 		{
-			if(trouver > inter.getDistance())
+			if(trouver > inter.getDistance() && inter.getDistance() > 0)
 			{
 				trouver=inter.getDistance();
 				inter.setObjet(objets[i]);
