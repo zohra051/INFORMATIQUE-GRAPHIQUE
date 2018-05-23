@@ -17,6 +17,7 @@ class Intensite
 		Intensite(unsigned int ir, unsigned int ig, unsigned int ib);	//constructeur paramètre
 		friend std::ostream& operator<<(std::ostream& os,const Intensite& c); //opérateur de sortie
 		friend std::istream& operator>>(std::istream& is,Intensite& c); //opérateur d'entrée
+		Intensite operator*(float k); //produit d’une intensit ́e par un scalaire
 };
 
 

@@ -2,7 +2,7 @@
 
 
 #include "Couleur.hpp"
-
+#include "Intensite.hpp"
 //constructeur par défaut, couleur noire
 Couleur::Couleur():
 r(0), g(0), b(0)
@@ -83,4 +83,42 @@ std::istream& operator>>(std::istream& is,Couleur& c)
 	is >> r >> g >> b;
 	c.setColor(r,g,b);
 	return is;
+}
+
+//produit d’une couleur par un scalaire
+Couleur Couleur::operator*(float k)
+{
+	float x= r*k;
+	float y= g*k;
+	float z= b*k;
+	return Couleur(x,y,z);
+}
+
+//addition de deux vecteurs
+Couleur Couleur::operator+=(const Couleur& v)
+{
+	float x = r + v.r;	
+	float y = g + v.g;
+	float z = b + v.b;
+	return Couleur(x,y,z);
+	
+}
+
+//addition d’une intensit ́e et d’une couleur
+Couleur& Couleur::operator+=(const Intensite& I)
+{
+	float x = r + I.ir;	
+	float y = g + I.ig;
+	float z = b + I.ib;
+	Couleur caca(x,y,z);
+	return caca;
+}
+
+//produit, par canal de couleur, entre une couleur et une intensit ́e
+Couleur Couleur::operator*(const Intensite& I)
+{
+	float x = r * I.ir;	
+	float y = g * I.ig;
+	float z = b * I.ib;
+	return Couleur(x,y,z);
 }

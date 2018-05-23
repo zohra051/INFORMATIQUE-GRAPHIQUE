@@ -13,14 +13,25 @@ Intensite::Intensite(unsigned int ir, unsigned int ig, unsigned int ib):
 ir(ir),ig(ig),ib(ib)
 {}
 
+//opérateur de sortie
 std::ostream& operator<<(std::ostream& os,const Intensite& c)
 {
 	os <<"("<<c.ir<<","<<c.ig<<","<<c.ib<<")";
 	return os;
 }
 
+//opérateur d'entrée
 std::istream& operator>>(std::istream& is,Intensite& c)
 {
 	is >> c.ir >> c.ig >> c.ib;
 	return is;
+}
+//produit d’une intensit ́e par un scalaire
+Intensite Intensite::operator*(float k)
+{
+	unsigned int x = ir * k;	
+	unsigned int y = ig * k;
+	unsigned int z = ib * k;
+	return Intensite(x,y,z);
+	
 }
