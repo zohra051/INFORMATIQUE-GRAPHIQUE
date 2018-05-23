@@ -95,4 +95,15 @@ std::istream& operator>>(std::istream& is,Sphere& s)
 	return is;
 }
 
+//Avoir la normale d'un objet par rapport à un point.
+Vecteur Sphere::getNormale(Point &p)
+{
+	float a = (p.x - centre.x);
+	float b = (p.y - centre.y);
+	float c = (p.z - centre.z);
+	Vecteur vect(a,b,c);
+	vect.normaliser();
+	return vect;
+	
+}
 

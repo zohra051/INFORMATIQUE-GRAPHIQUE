@@ -26,6 +26,7 @@ class Plan:public Objet
 		float getB() const;
 		float getC() const;
 		float getD() const;
+		Vecteur getNormale(Point &p); //Avoir la normale d'un objet par rapport à un point.
 		bool intersection(const Rayon& r, Intersection& inter) const; //routine d'intersection, @Objet
 		void afficher() const;	//permet d'afficher lorsque l'on passe par pointeur, @Objet
 		friend std::ostream& operator<<(std::ostream& os,const Plan& p); //opérateur de sortie

@@ -72,3 +72,12 @@ std::istream& operator>>(std::istream & is, Plan& p)
 	is >> p.materiau >> p.a >> p.b >> p.c >> p.d;
 	return is;
 }
+
+ //Avoir la normale d'un objet par rapport à un point.
+Vecteur Plan::getNormale(Point &p)
+{
+	Vecteur vect(a,b,c);
+	vect.normaliser();
+	return vect;
+	
+}

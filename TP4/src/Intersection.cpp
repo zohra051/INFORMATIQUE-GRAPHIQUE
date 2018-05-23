@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Point.hpp"
 #include "Intersection.hpp"
+#include "Objet.hpp"
+
 Intersection::Intersection():
 Point(),distance(0)
 {}
@@ -33,7 +35,11 @@ void Intersection::setIntersection(Point& p, float tarte)
 	distance=tarte;
 }
 
-/*
+Vecteur Intersection::getNormale()
+{
+	return objet->getNormale(*this);
+}
+
 
 //opérateur de sortie
 std::ostream& operator<<(std::ostream& os,const Intersection& i)
@@ -48,4 +54,4 @@ std::istream& operator>>(std::istream& is,Intersection& i)
 	is >> i.origine << i.objet>>i.distance;
 	return is;
 }
-*/
+

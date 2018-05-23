@@ -18,6 +18,7 @@ class Objet
 		Materiau getMateriau() const; //obtenir les informations d'un matériau
 		virtual bool intersection(const Rayon& r, Intersection& inter) const = 0;	//routine d'intersection
 		virtual void afficher() const =0;	//fonction qui permet d'afficher un objet passer en pointeur
+		virtual Vecteur getNormale(Point &p) = 0; //Avoir la normale d'un objet par rapport à un point.
 };
 
 #endif

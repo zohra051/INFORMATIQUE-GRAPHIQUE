@@ -21,6 +21,7 @@ class Sphere : public Objet
 		Sphere(Materiau materiau, Point centre, float rayon); // constructeur par paramètre
 		Point getCentre() const;	//getter centre
 		float getRayon() const;		//getter rayon
+		Vecteur getNormale(Point &p); //Avoir la normale d'un objet par rapport à un point.
 		bool intersection(const Rayon& r, Intersection& inter) const;	//routine d'intersection, @Objet
 		void afficher() const;		//fonction d'affichage par pointeur, @Objet
 		friend std::ostream& operator<<(std::ostream& os,const Sphere& s);	//opérateur sortie
